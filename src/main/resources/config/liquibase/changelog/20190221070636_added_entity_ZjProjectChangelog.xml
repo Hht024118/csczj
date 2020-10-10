@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity ZjProjectChangelog.
+    -->
+    <changeSet id="20190221070636-1" author="jhipster">
+        <createTable tableName="zj_project_changelog">
+            <column name="id" type="varchar(36)" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="varchar(36)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="specialty_id" type="varchar(36)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="change_type" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="change_version" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="change_reason" type="varchar(1000)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="change_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="old_field_id" type="varchar(36)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="old_field_text" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="new_field_id" type="varchar(36)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="new_field_text" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="flow_state" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="remark" type="varchar(500)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="multi_tenancy_id" type="varchar(40)">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="zj_project_changelog" columnName="change_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="zj_project_changelog" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="zj_project_changelog" columnName="last_modified_date" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

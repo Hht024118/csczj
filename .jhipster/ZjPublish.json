@@ -1,0 +1,29 @@
+{
+    "name": "ZjPublish",
+    "fields": [
+        {
+            "fieldName": "flowState",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "publishTime",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190305035633",
+    "javadoc": "造价咨询-项目变更记录表",
+    "entityTableName": "zj_publish",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "microserviceName": "csczj"
+}
