@@ -877,14 +877,17 @@ public class ZjProjectService {
                                             String busiType,
                                             String delegateUnit,
                                             String flowState,
-                                            Pageable pageable) {
+                                            Pageable pageable,
+                                            String isGood,
+                                            String isCold,
+                                            String attentionProjectType) {
         String multiId = MultiTenancyUtils.getMultiTenancyFilterId();
         if(StringUtils.isNullOrEmpty(multiId)) {
             return zjProjectRepository.findAllNormal
-                (contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,pageable);
+                (contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,pageable,isGood,isCold,attentionProjectType);
         } else {
             return zjProjectRepository.findAllNormalByMultiTenancyId
-                (contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,multiId,pageable);
+                (contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,multiId,pageable,isGood,isCold,attentionProjectType);
         }
     }
 
@@ -975,16 +978,19 @@ public class ZjProjectService {
                                                    String projectState,
                                                    String delegateUnit,
                                                    String busiType,
-                                                   Pageable pageable) {
+                                                   Pageable pageable,
+                                                   String isGood,
+                                                   String isCold,
+                                                   String attentionProjectType) {
         String multiId = MultiTenancyUtils.getMultiTenancyFilterId();
         if(StringUtils.isNullOrEmpty(multiId)) {
             Page<Map<String,Object>> pages = zjProjectRepository.findAllProcess(
-                contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit,busiType,pageable
+                contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit,busiType,pageable,isGood,isCold,attentionProjectType
             );
             return pages;
         } else {
             return zjProjectRepository.findAllProcessByMultiTenancyId(
-                contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit,busiType,multiId,pageable
+                contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit,busiType,multiId,pageable,isGood,isCold,attentionProjectType
             );
         }
     }
