@@ -137,6 +137,7 @@ public class ZjSpecialtyService {
                                 projectPersonDTO.setTechnicalPost("编制人");
                                 projectPersonDTO.setMainWork("自校");
                                 projectPersonDTO.setProjectType("zjzx");
+                                projectPersonDTO.setResultsForm(zjProjectDTO.getBusiType().concat("报告"));
                                 if (!cscggClient.getIsPerInfos(zjProjectDTO.getProjectNo(),ThsSecurityUtils.getDecodedDetailsVaule("entity_name").get(),"自校")){
                                     cscggClient.createProjectPerson(projectPersonDTO);
                                 }
@@ -154,6 +155,7 @@ public class ZjSpecialtyService {
                                 projectPersonDTO.setTechnicalPost("项目负责人");
                                 projectPersonDTO.setMainWork("自校汇总");
                                 projectPersonDTO.setProjectType("zjzx");
+                                projectPersonDTO.setResultsForm(zjProjectDTO.getBusiType().concat("报告"));
                                 if (!cscggClient.getIsPerInfos(zjProjectDTO.getProjectNo(),ThsSecurityUtils.getDecodedDetailsVaule("entity_name").get(),"自校汇总")){
                                     cscggClient.createProjectPerson(projectPersonDTO);
                                 }
@@ -170,6 +172,7 @@ public class ZjSpecialtyService {
                                 projectPersonDTO.setTechnicalPost("复核人");
                                 projectPersonDTO.setMainWork("二审");
                                 projectPersonDTO.setProjectType("zjzx");
+                                projectPersonDTO.setResultsForm(zjProjectDTO.getBusiType().concat("报告"));
                                 if (!cscggClient.getIsPerInfos(zjProjectDTO.getProjectNo(),ThsSecurityUtils.getDecodedDetailsVaule("entity_name").get(),"二审")){
                                     cscggClient.createProjectPerson(projectPersonDTO);
                                 }
@@ -195,6 +198,7 @@ public class ZjSpecialtyService {
                                 projectPersonDTO.setTechnicalPost("核定人");
                                 projectPersonDTO.setMainWork("三审");
                                 projectPersonDTO.setProjectType("zjzx");
+                                projectPersonDTO.setResultsForm(zjProjectDTO.getBusiType().concat("报告"));
                                 if (!cscggClient.getIsPerInfos(zjProjectDTO.getProjectNo(),ThsSecurityUtils.getDecodedDetailsVaule("entity_name").get(),"三审")){
                                     cscggClient.createProjectPerson(projectPersonDTO);
                                 }

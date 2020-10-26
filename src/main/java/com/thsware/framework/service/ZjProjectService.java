@@ -201,6 +201,7 @@ public class ZjProjectService {
                                 projectPersonDTO.setTechnicalPost("项目负责人");
                                 projectPersonDTO.setMainWork("项目登记");
                                 projectPersonDTO.setProjectType("zjzx");
+                                projectPersonDTO.setResultsForm(zjProjectDTO.getBusiType().concat("报告"));
                                 if (!cscggClient.getIsPerInfos(zjProjectDTO.getProjectNo(),zjProject.getProjectManagerName(),"项目登记")){
                                     cscggClient.createProjectPerson(projectPersonDTO);
                                 }
@@ -220,6 +221,7 @@ public class ZjProjectService {
                                 projectPersonDTO.setTechnicalPost("项目负责人");
                                 projectPersonDTO.setMainWork("项目策划");
                                 projectPersonDTO.setProjectType("zjzx");
+                                projectPersonDTO.setResultsForm(zjProjectDTO.getBusiType().concat("报告"));
                                 if (!cscggClient.getIsPerInfos(zjProjectDTO.getProjectNo(),ThsSecurityUtils.getDecodedDetailsVaule("entity_name").get(),"项目策划")){
                                     cscggClient.createProjectPerson(projectPersonDTO);
                                 }
@@ -252,6 +254,7 @@ public class ZjProjectService {
                                 projectPersonDTO.setTechnicalPost("项目负责人");
                                 projectPersonDTO.setMainWork("待归档");
                                 projectPersonDTO.setProjectType("zjzx");
+                                projectPersonDTO.setResultsForm(zjProjectDTO.getBusiType().concat("报告"));
                                 if (!cscggClient.getIsPerInfos(zjProjectDTO.getProjectNo(),ThsSecurityUtils.getDecodedDetailsVaule("entity_name").get(),"待归档")){
                                     cscggClient.createProjectPerson(projectPersonDTO);
                                 }

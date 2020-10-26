@@ -66,8 +66,8 @@ public class CsczjApp {
         DefaultProfileUtil.addDefaultProfile(app);
 //        System.setProperty("spring.datasource.password","dWF0sO2019Test###!!");
 //        System.setProperty("thsware.saas.database.password","dWF0sO2019Test###!!");
-        System.setProperty("spring.datasource.password","ccmpCc7)");
-        System.setProperty("thsware.saas.database.password","ccmpCc7)");
+//        System.setProperty("spring.datasource.password","ccmpCc7)");
+//        System.setProperty("thsware.saas.database.password","ccmpCc7)");
         Environment env = app.run(args).getEnvironment();
         String protocol = "http";
         if (env.getProperty("server.ssl.k ey-store") != null) {
