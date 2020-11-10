@@ -28,6 +28,8 @@ public class ZjProjectCriteria implements Serializable {
 
     private StringFilter id;
 
+    private StringFilter implementDept;
+
     private StringFilter projectNo;
 
     private StringFilter contractId;
@@ -147,6 +149,14 @@ public class ZjProjectCriteria implements Serializable {
 
     public void setId(StringFilter id) {
         this.id = id;
+    }
+
+    public StringFilter getImplementDept() {
+        return implementDept;
+    }
+
+    public void setImplementDept(StringFilter implementDept) {
+        this.implementDept = implementDept;
     }
 
     public StringFilter getProjectNo() {
@@ -612,6 +622,7 @@ public class ZjProjectCriteria implements Serializable {
             (isCold != null ? "isCold=" + isCold + ", " : "") +
             (isGood != null ? "isGood=" + isGood + ", " : "") +
             (marketRate != null ? "marketRate=" + marketRate + ", " : "") +
+            (implementDept != null ? "implementDept=" + implementDept + ", " : "") +
             "}";
     }
 

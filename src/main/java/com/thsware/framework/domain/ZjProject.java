@@ -40,6 +40,10 @@ public class ZjProject implements Serializable {
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
+    @Size(max = 500)
+    @Column(name = "implementDept", length = 500)
+    private String implementDept;
+
     @Size(max = 50)
     @Column(name = "project_no", length = 50)
     private String projectNo;
@@ -932,7 +936,14 @@ public class ZjProject implements Serializable {
         this.cooperativeCompany = cooperativeCompany;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    public String getImplementDept() {
+        return implementDept;
+    }
+
+    public void setImplementDept(String implementDept) {
+        this.implementDept = implementDept;
+    }
+// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
@@ -1010,6 +1021,7 @@ public class ZjProject implements Serializable {
             ", isGood='" + getIsGood() +"'" +
             ", marketRate=" + getMarketRate() +
             ", cooperativeCompany=" + getCooperativeCompany() +"'" +
+            ", implementDept=" + getImplementDept() +
             "}";
     }
 }

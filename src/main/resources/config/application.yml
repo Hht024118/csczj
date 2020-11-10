@@ -24,8 +24,8 @@ eureka:
         instance-info-replication-interval-seconds: 10
         registry-fetch-interval-seconds: 10
     instance:
-        appname: csczj
-        instanceId: csczj:${spring.application.instance-id:${random.value}}
+        appname: csczj_jhl
+        instanceId: csczj_jhl:${spring.application.instance-id:${random.value}}
         lease-renewal-interval-in-seconds: 5
         lease-expiration-duration-in-seconds: 10
         status-page-url-path: ${management.endpoints.web.base-path}/info
@@ -86,9 +86,9 @@ management:
 
 spring:
     application:
-        name: csczj
+        name: csczj_jhl
     jmx:
-        default-domain: csczj
+        default-domain: csczj_jhl
     jpa:
         open-in-view: false
         hibernate:

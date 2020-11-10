@@ -232,6 +232,9 @@ public class ZjProjectQueryService extends QueryService<ZjProject> {
             if (criteria.getMarketRate() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getMarketRate(), ZjProject_.marketRate));
             }
+            if (criteria.getImplementDept() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getImplementDept(), ZjProject_.implementDept));
+            }
         }
         return specification;
     }

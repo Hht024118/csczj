@@ -17,6 +17,9 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
 
     private String id;
 
+    @Size(max = 500)
+    private String implementDept;
+
     @Size(max = 50)
     private String projectNo;
 
@@ -649,6 +652,14 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
         this.marketRate = marketRate;
     }
 
+    public String getImplementDept() {
+        return implementDept;
+    }
+
+    public void setImplementDept(String implementDept) {
+        this.implementDept = implementDept;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -732,6 +743,7 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
             ", isGood='" + isGood +  '\'' +
             ", marketRate=" + marketRate +
             ", cooperativeCompany='" + cooperativeCompany +  '\'' +
+            ", implementDept='" + implementDept +  '\'' +
             '}';
     }
 }
