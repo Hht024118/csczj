@@ -112,7 +112,7 @@ public class ZjProjectService {
                 if (obj != null) {
                     projectBh = Integer.parseInt(obj.toString()) + 1;
                 }
-                DecimalFormat df = new DecimalFormat("0000");
+                DecimalFormat df = new DecimalFormat("00000");
                 projectNo_ = projectNo_ + "-" + df.format(projectBh);
             }
             return projectNo_;

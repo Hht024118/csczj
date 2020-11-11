@@ -174,7 +174,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
 //        "where year(created_date) = year(CURRENT_DATE) and implement_unit = :implementUnit"
 //        ,nativeQuery = true)
 //    Object getMaxProjectNo(@Param("implementUnit") String implementUnit);
-    @Query(value = "SELECT max(CONVERT(right(project_no,4),SIGNED)) from zj_project " +
+    @Query(value = "SELECT max(CONVERT(right(project_no,5),SIGNED)) from zj_project " +
         "where IFNULL(project_no,0) like %:projectNo% "
         ,nativeQuery = true)
     Object getMaxProjectNo(@Param("projectNo") String projectNo);
