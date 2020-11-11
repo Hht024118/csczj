@@ -41,7 +41,7 @@ public class ZjProject implements Serializable {
     private String id;
 
     @Size(max = 500)
-    @Column(name = "implementDept", length = 500)
+    @Column(name = "implement_dept", length = 500)
     private String implementDept;
 
     @Size(max = 50)
@@ -942,6 +942,11 @@ public class ZjProject implements Serializable {
 
     public void setImplementDept(String implementDept) {
         this.implementDept = implementDept;
+    }
+
+    public ZjProject implementDept(String implementDept){
+        this.implementDept = implementDept;
+        return this;
     }
 // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
