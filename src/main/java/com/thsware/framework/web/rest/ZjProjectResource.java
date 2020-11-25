@@ -3,6 +3,7 @@ package com.thsware.framework.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.thsware.framework.domain.ZjProject;
 import com.thsware.framework.domain.ZjPublish;
+import com.thsware.framework.domain.bo.ZjProjectBo;
 import com.thsware.framework.repository.ZjProjectRepository;
 import com.thsware.framework.service.*;
 import com.thsware.framework.service.dto.*;
@@ -340,6 +341,41 @@ public class  ZjProjectResource {
         Page<Map<String,Object>> page = zjProjectService.findAllProcess(contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit,busiType,pageable,isGood,isCold,attentionProjectType);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/zj-projects/allProcess");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @PostMapping("/zj-projects/getAllChildProject")
+    public List<Map<String, Object>> getAllChildProject(@Valid @RequestBody ZjProjectBo bo){
+        String contractNo = bo.getContractNo();
+        String projectNo = bo.getProjectNo();
+        String projectName = bo.getProjectName();
+        String projectManagerName = bo.getProjectManagerName();
+        String implementUnit = bo.getImplementUnit();
+        String projectState = bo.getProjectState();
+        String delegateUnit = bo.getDelegateUnit();
+        List parentIdList = bo.getParentIdList();
+        if (contractNo == null) {
+            contractNo = "";
+        }
+        if (projectNo == null) {
+            projectNo = "";
+        }
+        if (projectName == null) {
+            projectName = "";
+        }
+        if (projectManagerName == null) {
+            projectManagerName = "";
+        }
+        if (implementUnit == null) {
+            implementUnit = "";
+        }
+        if (projectState == null) {
+            projectState = "";
+        }
+        if (delegateUnit == null) {
+            delegateUnit = "";
+        }
+        List<Map<String,Object>> zjProjectList = zjProjectService.findAllByParentIds(parentIdList,contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit);
+        return  zjProjectList;
     }
 
     @GetMapping("/zj-projects/allChildProject")

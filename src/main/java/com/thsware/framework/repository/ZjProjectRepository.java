@@ -3,9 +3,11 @@ package com.thsware.framework.repository;
 import com.thsware.framework.domain.ZjProject;
 import com.thsware.framework.service.dto.ZjProjectDTO;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -832,7 +834,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " AND IFNULL( a.project_manager_name, '' ) LIKE %:projectManagerName%   " +
             " AND IFNULL( a.implement_unit, '' ) LIKE %:implementUnit%   " +
             " AND IFNULL( a.project_state, '' ) LIKE %:projectState%   " +
-            " AND IFNULL( a.delegate_unit, '' ) LIKE %:delegateUnit%",
+            " AND IFNULL( a.delegate_unit, '' ) LIKE %:delegateUnit%" +
+            " order by a.project_no ASC",
         countQuery = "SELECT  " +
         "count(*) " +
         "FROM  " +
@@ -890,7 +893,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " AND IFNULL( a.implement_unit, '' ) LIKE %:implementUnit%   " +
             " AND IFNULL( a.project_state, '' ) LIKE %:projectState%   " +
             " AND IFNULL( a.delegate_unit, '' ) LIKE %:delegateUnit% " +
-            " AND IFNULL( a.multi_tenancy_id, '' ) LIKE :multiId " ,
+            " AND IFNULL( a.multi_tenancy_id, '' ) LIKE :multiId " +
+            " order by a.project_no ASC",
         countQuery = "SELECT " +
         "count(*) " +
         "FROM  " +
