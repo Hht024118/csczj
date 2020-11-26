@@ -79,6 +79,12 @@ public class ZjProjectQueryService extends QueryService<ZjProject> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildSpecification(criteria.getId(), ZjProject_.id));
             }
+            if (criteria.getApplyCode() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getApplyCode(), ZjProject_.applyCode));
+            }
+            if (criteria.getProjectYear() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getProjectYear(), ZjProject_.projectYear));
+            }
             if (criteria.getProjectNo() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getProjectNo(), ZjProject_.projectNo));
             }

@@ -30,6 +30,10 @@ public class ZjProjectCriteria implements Serializable {
 
     private StringFilter implementDept;
 
+    private StringFilter applyCode;
+
+    private StringFilter projectYear;
+
     private StringFilter projectNo;
 
     private StringFilter contractId;
@@ -157,6 +161,22 @@ public class ZjProjectCriteria implements Serializable {
 
     public void setImplementDept(StringFilter implementDept) {
         this.implementDept = implementDept;
+    }
+
+    public StringFilter getApplyCode() {
+        return applyCode;
+    }
+
+    public void setApplyCode(StringFilter applyCode) {
+        this.applyCode = applyCode;
+    }
+
+    public StringFilter getProjectYear() {
+        return projectYear;
+    }
+
+    public void setProjectYear(StringFilter projectYear) {
+        this.projectYear = projectYear;
     }
 
     public StringFilter getProjectNo() {
@@ -571,6 +591,8 @@ public class ZjProjectCriteria implements Serializable {
     public String toString() {
         return "ZjProjectCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
+                (applyCode != null ? "applyCode=" + applyCode + ", " : "") +
+                (projectYear != null ? "projectYear=" + projectYear + ", " : "") +
                 (projectNo != null ? "projectNo=" + projectNo + ", " : "") +
                 (contractId != null ? "contractId=" + contractId + ", " : "") +
                 (contractNo != null ? "contractNo=" + contractNo + ", " : "") +

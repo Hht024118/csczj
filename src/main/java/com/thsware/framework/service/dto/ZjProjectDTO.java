@@ -3,6 +3,7 @@ package com.thsware.framework.service.dto;
 import com.thsware.framework.domain.ZjProject;
 
 import java.time.Instant;
+import javax.persistence.Column;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -19,6 +20,12 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
 
     @Size(max = 500)
     private String implementDept;
+
+    @Size(max = 200)
+    private String applyCode;
+
+    @Size(max = 10)
+    private String projectYear;
 
     @Size(max = 50)
     private String projectNo;
@@ -186,6 +193,22 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getApplyCode() {
+        return applyCode;
+    }
+
+    public void setApplyCode(String applyCode) {
+        this.applyCode = applyCode;
+    }
+
+    public String getProjectYear() {
+        return projectYear;
+    }
+
+    public void setProjectYear(String projectYear) {
+        this.projectYear = projectYear;
     }
 
     public String getProjectNo() {
@@ -685,6 +708,8 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
     public String toString() {
         return "ZjProjectDTO{" +
             "id='" + id + '\'' +
+            ", applyCode='" + applyCode + '\'' +
+            ", projectYear='" + projectYear + '\'' +
             ", projectNo='" + projectNo + '\'' +
             ", contractId='" + contractId + '\'' +
             ", contractNo='" + contractNo + '\'' +

@@ -99,15 +99,22 @@ public class ZjProjectService {
      * @param implementUnit 项目实施单位
      * @return
      */
-    public String createProjectNo(String projectNo,String implementUnit){
+    public String createProjectNo(String projectNo,String projectYear,String implementUnit){
         ReentrantLock lock = new ReentrantLock();
         try {
             lock.lock();
             String projectNo_ = "";
             if (!StringUtils.isNullOrEmpty(projectNo)) {
                 Object obj = new Object();
-                obj = zjProjectRepository.getMaxProjectNo(projectNo + "-" + DateUtil.getYear(new Date()));
-                projectNo_ = "JYZX-ZJ-" + projectNo + "-" + DateUtil.getYear(new Date());
+                if (!StringUtils.isNullOrEmpty(projectYear)) {
+                    obj = zjProjectRepository.getMaxProjectNo(projectNo + "-" + DateUtil.getYear(new Date()));
+                    projectNo_ = "JYZX-ZJ-" + projectNo + "-" + DateUtil.getYear(new Date());
+                }else{
+                    obj = zjProjectRepository.getMaxProjectNo(projectNo + "-" + projectYear);
+                    projectNo_ = "JYZX-ZJ-" + projectNo + "-" + projectYear;
+                }
+                //新需求根据前台项目木年度生成项目编号
+
                 int projectBh = 1;
                 if (obj != null) {
                     projectBh = Integer.parseInt(obj.toString()) + 1;

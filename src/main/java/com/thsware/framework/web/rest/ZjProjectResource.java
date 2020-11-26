@@ -78,7 +78,7 @@ public class  ZjProjectResource {
         if (zjProjectDTO.getId() != null) {
             throw new BadRequestAlertException("A new zjProject cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        zjProjectDTO.setProjectNo(zjProjectService.createProjectNo(zjProjectDTO.getProjectNo(),zjProjectDTO.getImplementUnit()));
+        zjProjectDTO.setProjectNo(zjProjectService.createProjectNo(zjProjectDTO.getProjectNo(),zjProjectDTO.getProjectYear(),zjProjectDTO.getImplementUnit()));
         ZjProjectDTO result = zjProjectService.save(zjProjectDTO);
         return ResponseEntity.created(new URI("/api/zj-projects/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -98,7 +98,7 @@ public class  ZjProjectResource {
         if (zjProjectDTO.getId() != null) {
             throw new BadRequestAlertException("A new zjProject cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        zjProjectDTO.setProjectNo(zjProjectService.createProjectNo(zjProjectDTO.getProjectNo(),zjProjectDTO.getImplementUnit()));
+        zjProjectDTO.setProjectNo(zjProjectService.createProjectNo(zjProjectDTO.getProjectNo(),zjProjectDTO.getProjectYear(),zjProjectDTO.getImplementUnit()));
         ZjProjectDTO result = zjProjectService.saveAllProcessProject(zjProjectDTO);
         return ResponseEntity.created(new URI("/api/zj-projects/allProcess" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -142,7 +142,7 @@ public class  ZjProjectResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         if(zjProjectDTO.getProjectNo().length() < 10){
-            zjProjectDTO.setProjectNo(zjProjectService.createProjectNo(zjProjectDTO.getProjectNo(),zjProjectDTO.getImplementUnit()));
+            zjProjectDTO.setProjectNo(zjProjectService.createProjectNo(zjProjectDTO.getProjectNo(),zjProjectDTO.getProjectYear(),zjProjectDTO.getImplementUnit()));
         }
         ZjProjectDTO result = zjProjectService.save(zjProjectDTO);
         return ResponseEntity.ok()
@@ -164,7 +164,7 @@ public class  ZjProjectResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         if(zjProjectDTO.getProjectNo().length() < 10){
-            zjProjectDTO.setProjectNo(zjProjectService.createProjectNo(zjProjectDTO.getProjectNo(),zjProjectDTO.getImplementUnit()));
+            zjProjectDTO.setProjectNo(zjProjectService.createProjectNo(zjProjectDTO.getProjectNo(),zjProjectDTO.getProjectYear(),zjProjectDTO.getImplementUnit()));
         }
         ZjProjectDTO result = zjProjectService.saveAllProcessProject(zjProjectDTO);
         return ResponseEntity.ok()

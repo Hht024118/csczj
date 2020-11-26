@@ -44,6 +44,14 @@ public class ZjProject implements Serializable {
     @Column(name = "implement_dept", length = 500)
     private String implementDept;
 
+    @Size(max = 200)
+    @Column(name = "apply_code", length = 50)
+    private String applyCode;
+
+    @Size(max = 10)
+    @Column(name = "project_year", length = 10)
+    private String projectYear;
+
     @Size(max = 50)
     @Column(name = "project_no", length = 50)
     private String projectNo;
@@ -321,6 +329,31 @@ public class ZjProject implements Serializable {
 
     public ZjProject projectName(String projectName) {
         this.projectName = projectName;
+        return this;
+    }
+    public String getApplyCode() {
+        return applyCode;
+    }
+
+    public void setApplyCode(String applyCode) {
+        this.applyCode = applyCode;
+    }
+
+    public ZjProject applyCode(String applyCode) {
+        this.applyCode = applyCode;
+        return this;
+    }
+
+    public String getProjectYear() {
+        return projectYear;
+    }
+
+    public void setProjectYear(String projectYear) {
+        this.projectYear = projectYear;
+    }
+
+    public ZjProject projectYear(String projectYear) {
+        this.projectYear = projectYear;
         return this;
     }
 
@@ -974,6 +1007,8 @@ public class ZjProject implements Serializable {
     public String toString() {
         return "ZjProject{" +
             "id=" + getId() +
+            ", applyCode='" + getApplyCode() + "'" +
+            ", projectYear='" + getProjectYear() + "'" +
             ", projectNo='" + getProjectNo() + "'" +
             ", contractId='" + getContractId() + "'" +
             ", contractNo='" + getContractNo() + "'" +
