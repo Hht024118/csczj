@@ -305,6 +305,7 @@ public class  ZjProjectResource {
         @RequestParam(value = "contractNo.contains", required = false) String contractNo,
         @RequestParam(value = "projectNo.contains", required = false) String projectNo,
         @RequestParam(value = "projectName.contains", required = false) String projectName,
+        @RequestParam(value = "projectName.equals", required = false) String projectNameEqu,
         @RequestParam(value = "projectManagerName.contains", required = false) String projectManagerName,
         @RequestParam(value = "implementUnit.contains", required = false) String implementUnit,
         @RequestParam(value = "projectState.contains", required = false) String projectState,
@@ -338,7 +339,10 @@ public class  ZjProjectResource {
         if (busiType == null) {
             busiType = "";
         }
-        Page<Map<String,Object>> page = zjProjectService.findAllProcess(contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit,busiType,pageable,isGood,isCold,attentionProjectType);
+        if (projectNameEqu == null) {
+            projectNameEqu = "";
+        }
+        Page<Map<String,Object>> page = zjProjectService.findAllProcess(contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit,busiType,pageable,isGood,isCold,attentionProjectType, projectNameEqu);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/zj-projects/allProcess");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

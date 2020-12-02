@@ -462,6 +462,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         "AND IFNULL( ia.busi_type, '' ) LIKE %:busiType% " +
         "AND if(:isGood != '', ia.is_good=:isGood, 1=1)"+
         "AND if(:isCold != '', ia.is_cold=:isCold, 1=1)"+
+        "AND if(:projectNameEqu != '', ia.project_name=:projectNameEqu, 1=1)"+
         "AND IFNULL(ia.attention_project_type,'') like %:attentionProjectType% "+
         "UNION  " +
         "SELECT  " +
@@ -504,6 +505,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         "AND IFNULL( ic.delegate_unit, '' ) LIKE %:delegateUnit%   " +
         "AND if(:isGood != '', ic.is_good=:isGood, 1=1)"+
         "AND if(:isCold != '', ic.is_cold=:isCold, 1=1)"+
+        "AND if(:projectNameEqu != '', ic.project_name=:projectNameEqu, 1=1)"+
         "AND IFNULL(ic.attention_project_type,'') like %:attentionProjectType% "+
         ")   " +
         ") AS oa   " +
@@ -545,6 +547,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND IFNULL( ia.busi_type, '' ) LIKE %:busiType% " +
             "AND if(:isGood != '', ia.is_good=:isGood, 1=1)"+
             "AND if(:isCold != '', ia.is_cold=:isCold, 1=1)"+
+            "AND if(:projectNameEqu != '', ia.project_name=:projectNameEqu, 1=1)"+
             "AND IFNULL(ia.attention_project_type,'') like %:attentionProjectType% "+
             "UNION  " +
             "SELECT  " +
@@ -587,6 +590,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND IFNULL( ic.delegate_unit, '' ) LIKE %:delegateUnit%   " +
             "AND if(:isGood != '', ic.is_good=:isGood, 1=1)"+
             "AND if(:isCold != '', ic.is_cold=:isCold, 1=1)"+
+            "AND if(:projectNameEqu != '', ic.project_name=:projectNameEqu, 1=1)"+
             "AND IFNULL(ic.attention_project_type,'') like %:attentionProjectType% "+
             ")   " +
             ") AS oa   ",
@@ -604,7 +608,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
                                             Pageable page,
                                             @Param("isGood") String isGood,
                                             @Param("isCold") String isCold,
-                                            @Param("attentionProjectType") String attentionProjectType);
+                                            @Param("attentionProjectType") String attentionProjectType,
+                                            @Param("projectNameEqu") String projectNameEqu);
     @Query(
         value = "SELECT " +
             "oa.id AS id,  " +
@@ -659,6 +664,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND ia.multi_tenancy_id LIKE :multiId " +
             "AND if(:isGood != '', ia.is_good=:isGood, 1=1)"+
             "AND if(:isCold != '', ia.is_cold=:isCold, 1=1)"+
+            "AND if(:projectNameEqu != '', ia.project_name=:projectNameEqu, 1=1)  "+
             "AND IFNULL(ia.attention_project_type,'') like %:attentionProjectType%  "+
             "UNION  " +
             "SELECT  " +
@@ -702,6 +708,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND ic.multi_tenancy_id LIKE :multiId " +
             "AND if(:isGood != '', ic.is_good=:isGood, 1=1)"+
             "AND if(:isCold != '', ic.is_cold=:isCold, 1=1)"+
+            "AND if(:projectNameEqu != '', ic.project_name=:projectNameEqu, 1=1)  "+
             "AND IFNULL(ic.attention_project_type,'') like %:attentionProjectType%  "+
             ")   " +
             ") AS oa   " +
@@ -744,6 +751,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND ia.multi_tenancy_id LIKE :multiId " +
             "AND if(:isGood != '', ia.is_good=:isGood, 1=1)"+
             "AND if(:isCold != '', ia.is_cold=:isCold, 1=1)"+
+            "AND if(:projectNameEqu != '', ia.project_name=:projectNameEqu, 1=1)  "+
             "AND IFNULL(ia.attention_project_type,'') like %:attentionProjectType%  "+
             "UNION  " +
             "SELECT  " +
@@ -787,6 +795,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND ic.multi_tenancy_id LIKE :multiId " +
             "AND if(:isGood != '', ic.is_good=:isGood, 1=1)  "+
             "AND if(:isCold != '', ic.is_cold=:isCold, 1=1)  "+
+            "AND if(:projectNameEqu != '', ic.project_name=:projectNameEqu, 1=1)  "+
             "AND IFNULL(ic.attention_project_type,'') like %:attentionProjectType%  "+
             ")   " +
             ") AS oa   ",
@@ -805,7 +814,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
                                             Pageable page,
                                             @Param("isGood") String isGood,
                                             @Param("isCold") String isCold,
-                                            @Param("attentionProjectType") String attentionProjectType);
+                                            @Param("attentionProjectType") String attentionProjectType,
+                                            @Param("projectNameEqu") String projectNameEqu);
 
     @Query(
         value = "SELECT  " +
