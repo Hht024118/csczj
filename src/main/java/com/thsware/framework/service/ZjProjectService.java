@@ -900,14 +900,15 @@ public class ZjProjectService {
                                             Pageable pageable,
                                             String isGood,
                                             String isCold,
-                                            String attentionProjectType) {
+                                            String attentionProjectType,
+                                            String projectNameEqu) {
         String multiId = MultiTenancyUtils.getMultiTenancyFilterId();
         if(StringUtils.isNullOrEmpty(multiId)) {
             return zjProjectRepository.findAllNormal
-                (contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,pageable,isGood,isCold,attentionProjectType);
+                (contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,pageable,isGood,isCold,attentionProjectType, projectNameEqu);
         } else {
             return zjProjectRepository.findAllNormalByMultiTenancyId
-                (contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,multiId,pageable,isGood,isCold,attentionProjectType);
+                (contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,multiId,pageable,isGood,isCold,attentionProjectType, projectNameEqu);
         }
     }
 

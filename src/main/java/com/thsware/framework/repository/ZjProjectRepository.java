@@ -79,6 +79,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " and IFNULL(flow_state,0) like %:flowState%"+
             " and if(:isGood != '', is_good=:isGood, 1=1)"+
             " and if(:isCold != '', is_cold=:isCold, 1=1)"+
+            " and if(:projectNameEqu != '', project_name=:projectNameEqu, 1=1)"+
             " and IFNULL(attention_project_type,0) like %:attentionProjectType%",
 
         countQuery = "SELECT count(*) FROM zj_project WHERE busi_type <> '全过程造价类'" +
@@ -94,6 +95,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " and IFNULL(flow_state,0) like %:flowState%"+
             " and if(:isGood != '', is_good=:isGood, 1=1)"+
             " and if(:isCold != '', is_cold=:isCold, 1=1)"+
+            " and if(:projectNameEqu != '', project_name=:projectNameEqu, 1=1)"+
             " and IFNULL(attention_project_type,0) like %:attentionProjectType%"
         ,nativeQuery = true)
     Page<Map<String,Object>> findAllNormal(@Param("contractNo") String contractNo,
@@ -108,7 +110,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
                                            Pageable page,
                                            @Param("isGood") String isGood,
                                            @Param("isCold") String isCold,
-                                           @Param("attentionProjectType") String attentionProjectType);
+                                           @Param("attentionProjectType") String attentionProjectType,
+                                           @Param("projectNameEqu") String projectNameEqu);
 
     @Query(value = "SELECT id as id,project_no as projectNo,contract_id as contractId,contract_no as contractNo,contract_name as contractName," +
         " project_name as projectName,register_date as registerDate,publish_date as publishDate,delegate_unit as delegateUnit,delegate_date as delegateDate," +
@@ -134,6 +137,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " and multi_tenancy_id like :multiId"+
         " and if(:isGood != '', is_good=:isGood, 1=1)"+
         " and if(:isCold != '', is_cold=:isCold, 1=1)"+
+        " and if(:projectNameEqu != '', project_name=:projectNameEqu, 1=1)"+
         " and IFNULL(attention_project_type,0) like %:attentionProjectType%",
         countQuery = "SELECT count(*) FROM zj_project WHERE busi_type <> '全过程造价类'" +
             " and parent_id IS NULL" +
@@ -149,6 +153,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " and multi_tenancy_id like :multiId"+
             " and if(:isGood != '', is_good=:isGood, 1=1)"+
             " and if(:isCold != '', is_cold=:isCold, 1=1)"+
+            " and if(:projectNameEqu != '', project_name=:projectNameEqu, 1=1)"+
             " and IFNULL(attention_project_type,0) like %:attentionProjectType%"
         ,nativeQuery = true)
     Page<Map<String,Object>> findAllNormalByMultiTenancyId(@Param("contractNo") String contractNo,
@@ -164,7 +169,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
                                                            Pageable page,
                                                            @Param("isGood") String isGood,
                                                            @Param("isCold") String isCold,
-                                                           @Param("attentionProjectType") String attentionProjectType);
+                                                           @Param("attentionProjectType") String attentionProjectType,
+                                                           @Param("projectNameEqu") String projectNameEqu);
 
 
     /**
