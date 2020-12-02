@@ -104,14 +104,24 @@ public class ZjProjectService {
         try {
             lock.lock();
             String projectNo_ = "";
+            SimpleDateFormat format = new SimpleDateFormat("yyyy");
+            Calendar c = Calendar.getInstance();
+            c.setTime(new Date());
+            c.add(Calendar.YEAR, -1);
+            Date y = c.getTime();
+            String year = format.format(y);
             if (!StringUtils.isNullOrEmpty(projectNo)) {
                 Object obj = new Object();
-                if (!StringUtils.isNullOrEmpty(projectYear)) {
+                //判断本年度和上 年度1：本年度 0：上年度
+                if (!StringUtils.isNullOrEmpty(projectYear) && "1".equals(projectYear)) {
                     obj = zjProjectRepository.getMaxProjectNo(projectNo + "-" + DateUtil.getYear(new Date()));
                     projectNo_ = "JYZX-ZJ-" + projectNo + "-" + DateUtil.getYear(new Date());
+                }else if(!StringUtils.isNullOrEmpty(projectYear) && "0".equals(projectYear)){
+                    obj = zjProjectRepository.getMaxProjectNo(projectNo + "-" + year);
+                    projectNo_ = "JYZX-ZJ-" + projectNo + "-" + year;
                 }else{
-                    obj = zjProjectRepository.getMaxProjectNo(projectNo + "-" + projectYear);
-                    projectNo_ = "JYZX-ZJ-" + projectNo + "-" + projectYear;
+                    obj = zjProjectRepository.getMaxProjectNo(projectNo + "-" + DateUtil.getYear(new Date()));
+                    projectNo_ = "JYZX-ZJ-" + projectNo + "-" + DateUtil.getYear(new Date());
                 }
                 //新需求根据前台项目木年度生成项目编号
 
