@@ -20,6 +20,14 @@ public interface CscggClient {
     @RequestMapping(value ="/api/pub-customers/{id}",method= RequestMethod.GET)
     ResponseEntity<Map<String,String>> getWtdwById(@PathVariable(value="id") String id);
 
+    /**
+     * 校验客户名称
+     * @param name
+     * @return
+     */
+    @RequestMapping(value ="/api/pub-check-name/{name}",method= RequestMethod.GET)
+    ResponseEntity<Map<String,String>> checkName(@PathVariable(value="name") String name);
+
     //合同
     @RequestMapping(value ="/api/sys-busiforms/deleteByProjectId/{id}",method= RequestMethod.DELETE)
     ResponseEntity<Void> deleteSysBusiform(@PathVariable(value="id") String id);
