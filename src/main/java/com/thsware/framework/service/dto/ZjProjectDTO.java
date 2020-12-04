@@ -175,6 +175,9 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
     @Size(max = 100)
     private String cooperativeCompany;
 
+    @Size(max = 500)
+    private String cooperativeCompanyNames;
+
     private List<ZjMemberDTO> zjMemberList;
 
     private List<ZjSpecialtyDTO> zjSpecialtyList;
@@ -651,6 +654,14 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
         this.cooperativeCompany = cooperativeCompany;
     }
 
+    public String getCooperativeCompanyNames() {
+        return cooperativeCompanyNames;
+    }
+
+    public void setCooperativeCompanyNames(String cooperativeCompanyNames) {
+        this.cooperativeCompanyNames = cooperativeCompanyNames;
+    }
+
     public String getIsCold() {
         return isCold;
     }
@@ -768,6 +779,7 @@ public class ZjProjectDTO  extends  WfParamDTO implements Serializable {
             ", isGood='" + isGood +  '\'' +
             ", marketRate=" + marketRate +
             ", cooperativeCompany='" + cooperativeCompany +  '\'' +
+            ", cooperativeCompanyNames=" + getCooperativeCompanyNames() +"'" +
             ", implementDept='" + implementDept +  '\'' +
             '}';
     }

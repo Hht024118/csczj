@@ -229,6 +229,9 @@ public class ZjProjectQueryService extends QueryService<ZjProject> {
             if (criteria.getCooperativeCompany() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getCooperativeCompany(), ZjProject_.cooperativeCompany));
             }
+            if (criteria.getCooperativeCompanyNames() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getCooperativeCompanyNames(), ZjProject_.cooperativeCompanyNames));
+            }
             if (criteria.getIsCold() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getIsCold(), ZjProject_.isCold));
             }

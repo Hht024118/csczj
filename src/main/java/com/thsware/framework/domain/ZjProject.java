@@ -249,6 +249,10 @@ public class ZjProject implements Serializable {
     @Column(name = "cooperative_company", length = 100)
     private String cooperativeCompany;
 
+    @Size(max = 500)
+    @Column(name = "cooperative_company_names", length = 500)
+    private String cooperativeCompanyNames;
+
     @Size(max = 50)
     @Column(name = "is_cold", length = 50)
     private String isCold;
@@ -259,8 +263,6 @@ public class ZjProject implements Serializable {
 
     @Column(name = "market_rate")
     private Double marketRate;
-
-
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -969,6 +971,19 @@ public class ZjProject implements Serializable {
         this.cooperativeCompany = cooperativeCompany;
     }
 
+    public String getCooperativeCompanyNames() {
+        return cooperativeCompanyNames;
+    }
+
+    public ZjProject cooperativeCompanyNames(String cooperativeCompanyNames){
+        this.cooperativeCompanyNames = cooperativeCompanyNames;
+        return this;
+    }
+
+    public void setCooperativeCompanyNames(String cooperativeCompanyNames) {
+        this.cooperativeCompanyNames = cooperativeCompanyNames;
+    }
+
     public String getImplementDept() {
         return implementDept;
     }
@@ -1061,6 +1076,7 @@ public class ZjProject implements Serializable {
             ", isGood='" + getIsGood() +"'" +
             ", marketRate=" + getMarketRate() +
             ", cooperativeCompany=" + getCooperativeCompany() +"'" +
+            ", cooperativeCompanyNames=" + getCooperativeCompanyNames() +"'" +
             ", implementDept=" + getImplementDept() +
             "}";
     }

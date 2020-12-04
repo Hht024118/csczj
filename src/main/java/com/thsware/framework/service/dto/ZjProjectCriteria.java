@@ -133,6 +133,8 @@ public class ZjProjectCriteria implements Serializable {
 
     private StringFilter cooperativeCompany;
 
+    private StringFilter cooperativeCompanyNames;
+
     private StringFilter isCold;
 
     private StringFilter isGood;
@@ -563,6 +565,14 @@ public class ZjProjectCriteria implements Serializable {
         this.cooperativeCompany = cooperativeCompany;
     }
 
+    public StringFilter getCooperativeCompanyNames() {
+        return cooperativeCompanyNames;
+    }
+
+    public void setCooperativeCompanyNames(StringFilter cooperativeCompanyNames) {
+        this.cooperativeCompanyNames = cooperativeCompanyNames;
+    }
+
     public StringFilter getIsCold() {
         return isCold;
     }
@@ -641,6 +651,7 @@ public class ZjProjectCriteria implements Serializable {
                 (cityWhere != null ? "cityWhere=" + cityWhere + ", " : "") +
                 (totalProjectCost != null ? "totalProjectCost=" + totalProjectCost + ", " : "") +
                 (cooperativeCompany != null ? "cooperativeCompany=" + cooperativeCompany + ", " : "") +
+                (cooperativeCompanyNames != null ? "cooperativeCompanyNames=" + cooperativeCompanyNames + ", " : "") +
             (isCold != null ? "isCold=" + isCold + ", " : "") +
             (isGood != null ? "isGood=" + isGood + ", " : "") +
             (marketRate != null ? "marketRate=" + marketRate + ", " : "") +
