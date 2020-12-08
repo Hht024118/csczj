@@ -257,6 +257,7 @@ public class  ZjProjectResource {
         @RequestParam(value = "projectName.equals", required = false) String projectNameEqu,
         @RequestParam(value = "projectManagerName.contains", required = false) String projectManagerName,
         @RequestParam(value = "implementUnit.contains", required = false) String implementUnit,
+        @RequestParam(value = "implementUnit.equals", required = false) String implementUnitEq,
         @RequestParam(value = "projectState.contains", required = false) String projectState,
         @RequestParam(value = "busiType.contains", required = false) String busiType,
         @RequestParam(value = "delegateUnit.contains", required = false) String delegateUnit,
@@ -280,6 +281,9 @@ public class  ZjProjectResource {
         if (implementUnit == null) {
             implementUnit = "";
         }
+        if (implementUnitEq == null) {
+            implementUnitEq = "";
+        }
         if (projectState == null) {
             projectState = "";
         }
@@ -295,7 +299,7 @@ public class  ZjProjectResource {
         if (projectNameEqu == null) {
             projectNameEqu = "";
         }
-        Page<Map<String,Object>> page = zjProjectService.findAllNormal(contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,busiType,delegateUnit,flowState,pageable,isGood,isCold,attentionProjectType, projectNameEqu);
+        Page<Map<String,Object>> page = zjProjectService.findAllNormal(contractNo,projectNo,projectName,projectManagerName,implementUnit,implementUnitEq,projectState,busiType,delegateUnit,flowState,pageable,isGood,isCold,attentionProjectType, projectNameEqu);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/zj-projects/alls");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -312,6 +316,7 @@ public class  ZjProjectResource {
         @RequestParam(value = "projectName.equals", required = false) String projectNameEqu,
         @RequestParam(value = "projectManagerName.contains", required = false) String projectManagerName,
         @RequestParam(value = "implementUnit.contains", required = false) String implementUnit,
+        @RequestParam(value = "implementUnit.equals", required = false) String implementUnitEq,
         @RequestParam(value = "projectState.contains", required = false) String projectState,
         @RequestParam(value = "delegateUnit.contains", required = false) String delegateUnit,
         @RequestParam(value = "busiType.contains", required = false) String busiType
@@ -334,6 +339,9 @@ public class  ZjProjectResource {
         if (implementUnit == null) {
             implementUnit = "";
         }
+        if (implementUnitEq == null) {
+            implementUnitEq = "";
+        }
         if (projectState == null) {
             projectState = "";
         }
@@ -346,7 +354,7 @@ public class  ZjProjectResource {
         if (projectNameEqu == null) {
             projectNameEqu = "";
         }
-        Page<Map<String,Object>> page = zjProjectService.findAllProcess(contractNo,projectNo,projectName,projectManagerName,implementUnit,projectState,delegateUnit,busiType,pageable,isGood,isCold,attentionProjectType, projectNameEqu);
+        Page<Map<String,Object>> page = zjProjectService.findAllProcess(contractNo,projectNo,projectName,projectManagerName,implementUnit,implementUnitEq,projectState,delegateUnit,busiType,pageable,isGood,isCold,attentionProjectType, projectNameEqu);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/zj-projects/allProcess");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -566,7 +574,9 @@ public class  ZjProjectResource {
                 criteria.setProjectState((new StringFilter().setContains("已归档")));
                 page2 = zjProjectService.findAllProjectArchiveOK(
                     criteria.getProjectState().getContains(),criteria.getContractNo().getContains(),criteria.getProjectNo().getContains(),
-                    criteria.getProjectName().getContains(),criteria.getProjectManagerName().getContains(),criteria.getImplementUnit().getContains(),
+                    criteria.getProjectName().getContains(),criteria.getProjectManagerName().getContains(),
+                    StringUtils.isEmpty(criteria.getImplementUnit().getContains())?"":criteria.getImplementUnit().getContains(),
+                    StringUtils.isEmpty(criteria.getImplementUnit().getEquals())?"":criteria.getImplementUnit().getEquals(),
                     criteria.getBusiType().getContains(),criteria.getDelegateUnit().getContains(),pageable);
                 HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page2, "/api/zj-projects/xmgz");
                 return new ResponseEntity<>(page2.getContent(), headers, HttpStatus.OK);

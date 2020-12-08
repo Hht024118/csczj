@@ -61,7 +61,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " delegate_dept as delegateDept,delegate_linkman as delegateLinkman,required_date as requiredDate,is_government_invest as isGovernmentInvest," +
             " project_type as projectType,project_industry as projectIndustry,project_source as projectSource,busi_type as busiType,specialty as specialty," +
             " project_scale as projectScale,cost_money as costMoney,submit_money as submitMoney,project_manager as projectManager,project_manager_name as projectManagerName," +
-            " plan_finish_date as planFinishDate,implement_unit as implementUnit,content_scope as contentScope,is_outsource as isOutsource,outsource_desc as outsourceDesc," +
+            " plan_finish_date as planFinishDate,implement_unit as implementUnit,implement_dept as implementDept,content_scope as contentScope,is_outsource as isOutsource,outsource_desc as outsourceDesc," +
             " project_progress as projectProgress,project_budget as projectBudget,need_money as needMoney,flow_state as flowState,project_state as projectState,remark as remark," +
             " multi_tenancy_id as multiTenancyId,created_by as createdBy,created_date as createdDate,last_modified_by as lastModifiedBy,last_modified_date as lastModifiedDate," +
             " parent_id as parentId,linkage_branch as linkageBranch,contract_money as contractMoney,report_conclusion as reportConclusion,estimated_income as estimatedIncome,is_ccb_client as isCcbClient," +
@@ -72,7 +72,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " and IFNULL(project_no,0) like %:projectNo% " +
             " and IFNULL(project_name,0) like %:projectName%" +
             " and IFNULL(project_manager_name,0) like %:projectManagerName%" +
-            " and IFNULL(implement_unit,0) like %:implementUnit%" +
+            " and if(:implementUnit != '', implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', implement_unit = :implementUnitEq, 1=1)"+
             " and IFNULL(project_state,0) like %:projectState% " +
             " and IFNULL(busi_type,0) like %:busiType%" +
             " and IFNULL(delegate_unit,0) like %:delegateUnit%  " +
@@ -88,7 +89,10 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " and IFNULL(project_no,0) like %:projectNo% " +
             " and IFNULL(project_name,0) like %:projectName%" +
             " and IFNULL(project_manager_name,0) like %:projectManagerName%" +
-            " and IFNULL(implement_unit,0) like %:implementUnit%" +
+            " and if(:implementUnit != '', implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', implement_unit = :implementUnitEq, 1=1)"+
+//            " and IFNULL(implement_unit,0) like %:implementUnit%" +
+//            " and IFNULL(implement_unit,0)  %:implementUnit%" +
             " and IFNULL(project_state,0) like %:projectState% " +
             " and IFNULL(busi_type,0) like %:busiType%" +
             " and IFNULL(delegate_unit,0) like %:delegateUnit%  " +
@@ -103,6 +107,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
                                            @Param("projectName") String projectName,
                                            @Param("projectManagerName") String projectManagerName,
                                            @Param("implementUnit") String implementUnit,
+                                           @Param("implementUnitEq") String implementUnitEq,
                                            @Param("projectState") String projectState,
                                            @Param("busiType") String busiType,
                                            @Param("delegateUnit") String delegateUnit,
@@ -118,7 +123,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " delegate_dept as delegateDept,delegate_linkman as delegateLinkman,required_date as requiredDate,is_government_invest as isGovernmentInvest," +
         " project_type as projectType,project_industry as projectIndustry,project_source as projectSource,busi_type as busiType,specialty as specialty," +
         " project_scale as projectScale,cost_money as costMoney,submit_money as submitMoney,project_manager as projectManager,project_manager_name as projectManagerName," +
-        " plan_finish_date as planFinishDate,implement_unit as implementUnit,content_scope as contentScope,is_outsource as isOutsource,outsource_desc as outsourceDesc," +
+        " plan_finish_date as planFinishDate,implement_unit as implementUnit,implement_dept as implementDept,content_scope as contentScope,is_outsource as isOutsource,outsource_desc as outsourceDesc," +
         " project_progress as projectProgress,project_budget as projectBudget,need_money as needMoney,flow_state as flowState,project_state as projectState,remark as remark," +
         " multi_tenancy_id as multiTenancyId,created_by as createdBy,created_date as createdDate,last_modified_by as lastModifiedBy,last_modified_date as lastModifiedDate," +
         " parent_id as parentId,linkage_branch as linkageBranch,contract_money as contractMoney,report_conclusion as reportConclusion,estimated_income as estimatedIncome,is_ccb_client as isCcbClient," +
@@ -129,7 +134,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " and IFNULL(project_no,0) like %:projectNo% " +
         " and IFNULL(project_name,0) like %:projectName%" +
         " and IFNULL(project_manager_name,0) like %:projectManagerName%" +
-        " and IFNULL(implement_unit,0) like %:implementUnit%" +
+        " and if(:implementUnit != '', implement_unit like %:implementUnit%, 1=1)"+
+        " and if(:implementUnitEq != '', implement_unit = :implementUnitEq, 1=1)"+
         " and IFNULL(project_state,0) like %:projectState% " +
         " and IFNULL(busi_type,0) like %:busiType%" +
         " and IFNULL(delegate_unit,0) like %:delegateUnit%  " +
@@ -145,7 +151,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " and IFNULL(project_no,0) like %:projectNo% " +
             " and IFNULL(project_name,0) like %:projectName%" +
             " and IFNULL(project_manager_name,0) like %:projectManagerName%" +
-            " and IFNULL(implement_unit,0) like %:implementUnit%" +
+            " and if(:implementUnit != '', implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', implement_unit = :implementUnitEq, 1=1)"+
             " and IFNULL(project_state,0) like %:projectState% " +
             " and IFNULL(busi_type,0) like %:busiType%" +
             " and IFNULL(delegate_unit,0) like %:delegateUnit%  " +
@@ -161,6 +168,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
                                                            @Param("projectName") String projectName,
                                                            @Param("projectManagerName") String projectManagerName,
                                                            @Param("implementUnit") String implementUnit,
+                                                           @Param("implementUnitEq") String implementUnitEq,
                                                            @Param("projectState") String projectState,
                                                            @Param("busiType") String busiType,
                                                            @Param("delegateUnit") String delegateUnit,
@@ -239,6 +247,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " a.delegate_unit as delegateUnit, " +
         " a.project_manager_name as projectManagerName, " +
         " a.implement_unit as implementUnit, " +
+        " a.implement_dept as implementDept, " +
         " a.plan_finish_date as planFinishDate," +
         " a.project_no as projectNo, " +
         " a.created_date as createdDate, " +
@@ -254,6 +263,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " b.delegate_unit as delegateUnit, " +
         " b.project_manager_name as projectManagerName, " +
         " b.implement_unit as implementUnit, " +
+        " b.implement_dept as implementDept, " +
         " b.plan_finish_date as planFinishDate, " +
         " b.project_no as projectNo, " +
         " b.created_date as createdDate, " +
@@ -264,7 +274,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " AND ifnull( c.projectNo, '' ) LIKE %:projectNo% " +
         " AND ifnull( c.projectName, '' ) LIKE %:projectName% " +
         " AND ifnull( c.projectManagerName, '' ) LIKE %:projectManagerName% " +
-        " AND ifnull( c.implementUnit, '' ) LIKE %:implementUnit% " +
+        " and if(:implementUnit != '', c.implement_unit like %:implementUnit%, 1=1)"+
+        " and if(:implementUnitEq != '', c.implement_unit = :implementUnitEq, 1=1)"+
         " AND ifnull( c.busiType, '' ) LIKE %:busiType% " +
         " AND ifnull( c.delegateUnit, '' ) LIKE %:delegateUnit%" +
         " order by c.createdDate desc ",
@@ -278,6 +289,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " a.delegate_unit as delegateUnit, " +
             " a.project_manager_name as projectManagerName, " +
             " a.implement_unit as implementUnit, " +
+            " a.implement_dept as implementDept, " +
             " a.plan_finish_date as planFinishDate, " +
             " a.project_no as projectNo, " +
             " a.created_date as createdDate, " +
@@ -293,6 +305,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " b.delegate_unit as delegateUnit, " +
             " b.project_manager_name as projectManagerName, " +
             " b.implement_unit as implementUnit, " +
+            " b.implement_dept as implementDept, " +
             " b.plan_finish_date as planFinishDate, " +
             " b.project_no as projectNo, " +
             " b.created_date as createdDate, " +
@@ -303,13 +316,14 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " AND ifnull( c.projectNo, '' ) LIKE %:projectNo% " +
             " AND ifnull( c.projectName, '' ) LIKE %:projectName% " +
             " AND ifnull( c.projectManagerName, '' ) LIKE %:projectManagerName% " +
-            " AND ifnull( c.implementUnit, '' ) LIKE %:implementUnit% " +
+            " and if(:implementUnit != '', c.implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', c.implement_unit = :implementUnitEq, 1=1)"+
             " AND ifnull( c.busiType, '' ) LIKE %:busiType% " +
             " AND ifnull( c.delegateUnit, '' ) LIKE %:delegateUnit%"
         ,nativeQuery = true)
 //    Page<Map<String,Object>> findAllProjectArchiveOK(@Param("projectState") String projectState, Pageable page);
     Page<Map<String,Object>> findAllProjectArchiveOK(@Param("projectState") String projectState,@Param("contractNo") String contractNo,@Param("projectNo") String projectNo,
-        @Param("projectName") String projectName,@Param("projectManagerName") String projectManagerName,@Param("implementUnit") String implementUnit,
+        @Param("projectName") String projectName,@Param("projectManagerName") String projectManagerName,@Param("implementUnit") String implementUnit,@Param("implementUnitEq") String implementUnitEq,
         @Param("busiType") String busiType,@Param("delegateUnit") String delegateUnit, Pageable page);
 
     @Query(value = "SELECT c.id as id, " +
@@ -334,6 +348,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " a.delegate_unit as delegateUnit, " +
         " a.project_manager_name as projectManagerName, " +
         " a.implement_unit as implementUnit, " +
+        " a.implement_dept as implementDept, " +
         " a.plan_finish_date as planFinishDate," +
         " a.project_no as projectNo, " +
         " a.created_date as createdDate, " +
@@ -350,6 +365,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " b.delegate_unit as delegateUnit, " +
         " b.project_manager_name as projectManagerName, " +
         " b.implement_unit as implementUnit, " +
+        " b.implement_dept as implementDept, " +
         " b.plan_finish_date as planFinishDate, " +
         " b.project_no as projectNo, " +
         " b.created_date as createdDate, " +
@@ -361,7 +377,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " AND ifnull( c.projectNo, '' ) LIKE %:projectNo% " +
         " AND ifnull( c.projectName, '' ) LIKE %:projectName% " +
         " AND ifnull( c.projectManagerName, '' ) LIKE %:projectManagerName% " +
-        " AND ifnull( c.implementUnit, '' ) LIKE %:implementUnit% " +
+        " and if(:implementUnit != '', c.implement_unit like %:implementUnit%, 1=1)"+
+        " and if(:implementUnitEq != '', c.implement_unit = :implementUnitEq, 1=1)"+
         " AND ifnull( c.busiType, '' ) LIKE %:busiType% " +
         " AND ifnull( c.delegateUnit, '' ) LIKE %:delegateUnit%" +
         " AND c.multiTenancyId like :multiId order by c.createdDate desc ",
@@ -375,6 +392,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " a.delegate_unit as delegateUnit, " +
             " a.project_manager_name as projectManagerName, " +
             " a.implement_unit as implementUnit, " +
+            " a.implement_dept as implementDept, " +
             " a.plan_finish_date as planFinishDate, " +
             " a.project_no as projectNo, " +
             " a.created_date as createdDate, " +
@@ -391,6 +409,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " b.delegate_unit as delegateUnit, " +
             " b.project_manager_name as projectManagerName, " +
             " b.implement_unit as implementUnit, " +
+            " b.implement_dept as implementDept, " +
             " b.plan_finish_date as planFinishDate, " +
             " b.project_no as projectNo, " +
             " b.created_date as createdDate, " +
@@ -402,14 +421,15 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " AND ifnull( c.projectNo, '' ) LIKE %:projectNo% " +
             " AND ifnull( c.projectName, '' ) LIKE %:projectName% " +
             " AND ifnull( c.projectManagerName, '' ) LIKE %:projectManagerName% " +
-            " AND ifnull( c.implementUnit, '' ) LIKE %:implementUnit% " +
+            " and if(:implementUnit != '', c.implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', c.implement_unit = :implementUnitEq, 1=1)"+
             " AND ifnull( c.busiType, '' ) LIKE %:busiType% " +
             " AND ifnull( c.delegateUnit, '' ) LIKE %:delegateUnit%" +
             " AND c.multiTenancyId like :multiId "
         ,nativeQuery = true)
 //    Page<Map<String,Object>> findAllProjectArchiveOK(@Param("projectState") String projectState, Pageable page);
     Page<Map<String,Object>> findAllProjectArchiveOKByMultiTenancyId(@Param("projectState") String projectState,@Param("contractNo") String contractNo,@Param("projectNo") String projectNo,
-                                                     @Param("projectName") String projectName,@Param("projectManagerName") String projectManagerName,@Param("implementUnit") String implementUnit,
+                                                     @Param("projectName") String projectName,@Param("projectManagerName") String projectManagerName,@Param("implementUnit") String implementUnit,@Param("implementUnitEq") String implementUnitEq,
                                                      @Param("busiType") String busiType,@Param("delegateUnit") String delegateUnit, @Param("multiId") String multiId, Pageable page);
 
     List<ZjProject> findAllByParentIdInAndProjectStateOrderByCreatedDateDesc(List<String> parentIdList,@Size(max = 50) String projectState);
@@ -425,6 +445,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         "oa.delegateUnit AS delegateUnit,  " +
         "oa.projectManagerName AS projectManagerName,  " +
         "oa.implementUnit AS implementUnit,  " +
+        "oa.implementDept AS implementDept,  " +
         "oa.planFinishDate AS planFinishDate,  " +
         "oa.projectNo AS projectNo,  " +
         "oa.createdDate AS createdDate,  " +
@@ -445,6 +466,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         "ia.delegate_unit AS delegateUnit,  " +
         "ia.project_manager_name AS projectManagerName,  " +
         "ia.implement_unit AS implementUnit,  " +
+        "ia.implement_dept AS implementDept,  " +
         "ia.plan_finish_date AS planFinishDate,  " +
         "ia.project_no AS projectNo,  " +
         "ia.created_date AS createdDate,  " +
@@ -462,7 +484,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         "AND IFNULL( ia.project_no, '' ) LIKE %:projectNo%  " +
         "AND IFNULL( ia.project_name, '' ) LIKE %:projectName%   " +
         "AND IFNULL( ia.project_manager_name, '' ) LIKE %:projectManagerName%  " +
-        "AND IFNULL( ia.implement_unit, '' ) LIKE %:implementUnit%   " +
+        " and if(:implementUnit != '', ia.implement_unit like %:implementUnit%, 1=1)"+
+        " and if(:implementUnitEq != '', ia.implement_unit = :implementUnitEq, 1=1)"+
         "AND IFNULL( ia.project_state, '' ) LIKE %:projectState%   " +
         "AND IFNULL( ia.delegate_unit, '' ) LIKE %:delegateUnit%   " +
         "AND IFNULL( ia.busi_type, '' ) LIKE %:busiType% " +
@@ -480,6 +503,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         "ib.delegate_unit AS delegateUnit,  " +
         "ib.project_manager_name AS projectManagerName,  " +
         "ib.implement_unit AS implementUnit,  " +
+        "ib.implement_dept AS implementDept,  " +
         "ib.plan_finish_date AS planFinishDate,  " +
         "ib.project_no AS projectNo,  " +
         "ib.created_date AS createdDate,  " +
@@ -506,7 +530,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         "AND IFNULL( ic.project_no, '' ) LIKE %:projectNo%  " +
         "AND IFNULL( ic.project_name, '' ) LIKE %:projectName%   " +
         "AND IFNULL( ic.project_manager_name, '' ) LIKE %:projectManagerName%  " +
-        "AND IFNULL( ic.implement_unit, '' ) LIKE %:implementUnit%   " +
+        " and if(:implementUnit != '', ic.implement_unit like %:implementUnit%, 1=1)"+
+        " and if(:implementUnitEq != '', ic.implement_unit = :implementUnitEq, 1=1)"+
         "AND IFNULL( ic.project_state, '' ) LIKE %:projectState%   " +
         "AND IFNULL( ic.delegate_unit, '' ) LIKE %:delegateUnit%   " +
         "AND if(:isGood != '', ic.is_good=:isGood, 1=1)"+
@@ -530,6 +555,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "ia.delegate_unit AS delegateUnit,  " +
             "ia.project_manager_name AS projectManagerName,  " +
             "ia.implement_unit AS implementUnit,  " +
+            "ia.implement_dept AS implementDept,  " +
             "ia.plan_finish_date AS planFinishDate,  " +
             "ia.project_no AS projectNo,  " +
             "ia.created_date AS createdDate,  " +
@@ -547,7 +573,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND IFNULL( ia.project_no, '' ) LIKE %:projectNo%  " +
             "AND IFNULL( ia.project_name, '' ) LIKE %:projectName%   " +
             "AND IFNULL( ia.project_manager_name, '' ) LIKE %:projectManagerName%  " +
-            "AND IFNULL( ia.implement_unit, '' ) LIKE %:implementUnit%   " +
+            " and if(:implementUnit != '', ia.implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', ia.implement_unit = :implementUnitEq, 1=1)"+
             "AND IFNULL( ia.project_state, '' ) LIKE %:projectState%   " +
             "AND IFNULL( ia.delegate_unit, '' ) LIKE %:delegateUnit%   " +
             "AND IFNULL( ia.busi_type, '' ) LIKE %:busiType% " +
@@ -565,6 +592,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "ib.delegate_unit AS delegateUnit,  " +
             "ib.project_manager_name AS projectManagerName,  " +
             "ib.implement_unit AS implementUnit,  " +
+            "ib.implement_dept AS implementDept,  " +
             "ib.plan_finish_date AS planFinishDate,  " +
             "ib.project_no AS projectNo,  " +
             "ib.created_date AS createdDate,  " +
@@ -591,7 +619,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND IFNULL( ic.project_no, '' ) LIKE %:projectNo%  " +
             "AND IFNULL( ic.project_name, '' ) LIKE %:projectName%   " +
             "AND IFNULL( ic.project_manager_name, '' ) LIKE %:projectManagerName%  " +
-            "AND IFNULL( ic.implement_unit, '' ) LIKE %:implementUnit%   " +
+            " and if(:implementUnit != '', ic.implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', ic.implement_unit = :implementUnitEq, 1=1)"+
             "AND IFNULL( ic.project_state, '' ) LIKE %:projectState%   " +
             "AND IFNULL( ic.delegate_unit, '' ) LIKE %:delegateUnit%   " +
             "AND if(:isGood != '', ic.is_good=:isGood, 1=1)"+
@@ -608,6 +637,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
                                             @Param("projectName") String projectName,
                                             @Param("projectManagerName") String projectManagerName,
                                             @Param("implementUnit") String implementUnit,
+                                            @Param("implementUnitEq") String implementUnitEq,
                                             @Param("projectState") String projectState,
                                             @Param("delegateUnit") String delegateUnit,
                                             @Param("busiType") String busiType,
@@ -626,6 +656,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "oa.delegateUnit AS delegateUnit,  " +
             "oa.projectManagerName AS projectManagerName,  " +
             "oa.implementUnit AS implementUnit,  " +
+            "oa.implementDept AS implementDept,  " +
             "oa.planFinishDate AS planFinishDate,  " +
             "oa.projectNo AS projectNo,  " +
             "oa.createdDate AS createdDate,  " +
@@ -646,6 +677,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "ia.delegate_unit AS delegateUnit,  " +
             "ia.project_manager_name AS projectManagerName,  " +
             "ia.implement_unit AS implementUnit,  " +
+            "ia.implement_dept AS implementDept,  " +
             "ia.plan_finish_date AS planFinishDate,  " +
             "ia.project_no AS projectNo,  " +
             "ia.created_date AS createdDate,  " +
@@ -663,7 +695,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND IFNULL( ia.project_no, '' ) LIKE %:projectNo%  " +
             "AND IFNULL( ia.project_name, '' ) LIKE %:projectName%   " +
             "AND IFNULL( ia.project_manager_name, '' ) LIKE %:projectManagerName%  " +
-            "AND IFNULL( ia.implement_unit, '' ) LIKE %:implementUnit%   " +
+            " and if(:implementUnit != '', ia.implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', ia.implement_unit = :implementUnitEq, 1=1)"+
             "AND IFNULL( ia.project_state, '' ) LIKE %:projectState%   " +
             "AND IFNULL( ia.delegate_unit, '' ) LIKE %:delegateUnit%   " +
             "AND IFNULL( ia.busi_type, '' ) LIKE %:busiType% " +
@@ -682,6 +715,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "ib.delegate_unit AS delegateUnit,  " +
             "ib.project_manager_name AS projectManagerName,  " +
             "ib.implement_unit AS implementUnit,  " +
+            "ib.implement_dept AS implementDept,  " +
             "ib.plan_finish_date AS planFinishDate,  " +
             "ib.project_no AS projectNo,  " +
             "ib.created_date AS createdDate,  " +
@@ -708,7 +742,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND IFNULL( ic.project_no, '' ) LIKE %:projectNo%  " +
             "AND IFNULL( ic.project_name, '' ) LIKE %:projectName%   " +
             "AND IFNULL( ic.project_manager_name, '' ) LIKE %:projectManagerName%  " +
-            "AND IFNULL( ic.implement_unit, '' ) LIKE %:implementUnit%   " +
+            " and if(:implementUnit != '', ic.implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', ic.implement_unit = :implementUnitEq, 1=1)"+
             "AND IFNULL( ic.project_state, '' ) LIKE %:projectState%   " +
             "AND IFNULL( ic.delegate_unit, '' ) LIKE %:delegateUnit%   " +
             "AND ic.multi_tenancy_id LIKE :multiId " +
@@ -733,6 +768,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "ia.delegate_unit AS delegateUnit,  " +
             "ia.project_manager_name AS projectManagerName,  " +
             "ia.implement_unit AS implementUnit,  " +
+            "ia.implement_dept AS implementDept,  " +
             "ia.plan_finish_date AS planFinishDate,  " +
             "ia.project_no AS projectNo,  " +
             "ia.created_date AS createdDate,  " +
@@ -750,7 +786,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND IFNULL( ia.project_no, '' ) LIKE %:projectNo%  " +
             "AND IFNULL( ia.project_name, '' ) LIKE %:projectName%   " +
             "AND IFNULL( ia.project_manager_name, '' ) LIKE %:projectManagerName%  " +
-            "AND IFNULL( ia.implement_unit, '' ) LIKE %:implementUnit%   " +
+            " and if(:implementUnit != '', ia.implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', ia.implement_unit = :implementUnitEq, 1=1)"+
             "AND IFNULL( ia.project_state, '' ) LIKE %:projectState%   " +
             "AND IFNULL( ia.delegate_unit, '' ) LIKE %:delegateUnit%   " +
             "AND IFNULL( ia.busi_type, '' ) LIKE %:busiType% " +
@@ -769,6 +806,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "ib.delegate_unit AS delegateUnit,  " +
             "ib.project_manager_name AS projectManagerName,  " +
             "ib.implement_unit AS implementUnit,  " +
+            "ib.implement_dept AS implementDept,  " +
             "ib.plan_finish_date AS planFinishDate,  " +
             "ib.project_no AS projectNo,  " +
             "ib.created_date AS createdDate,  " +
@@ -795,7 +833,8 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             "AND IFNULL( ic.project_no, '' ) LIKE %:projectNo%  " +
             "AND IFNULL( ic.project_name, '' ) LIKE %:projectName%   " +
             "AND IFNULL( ic.project_manager_name, '' ) LIKE %:projectManagerName%  " +
-            "AND IFNULL( ic.implement_unit, '' ) LIKE %:implementUnit%   " +
+            " and if(:implementUnit != '', ic.implement_unit like %:implementUnit%, 1=1)"+
+            " and if(:implementUnitEq != '', ic.implement_unit = :implementUnitEq, 1=1)"+
             "AND IFNULL( ic.project_state, '' ) LIKE %:projectState%   " +
             "AND IFNULL( ic.delegate_unit, '' ) LIKE %:delegateUnit%   " +
             "AND ic.multi_tenancy_id LIKE :multiId " +
@@ -813,6 +852,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
                                             @Param("projectName") String projectName,
                                             @Param("projectManagerName") String projectManagerName,
                                             @Param("implementUnit") String implementUnit,
+                                            @Param("implementUnitEq") String implementUnitEq,
                                             @Param("projectState") String projectState,
                                             @Param("delegateUnit") String delegateUnit,
                                             @Param("busiType") String busiType,
@@ -833,6 +873,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " a.delegate_unit AS delegateUnit,  " +
             " a.project_manager_name AS projectManagerName,  " +
             " a.implement_unit AS implementUnit,  " +
+            " a.implement_dept AS implementDept,  " +
             " a.plan_finish_date AS planFinishDate,  " +
             " a.project_no AS projectNo,  " +
             " a.created_date AS createdDate,  " +
@@ -890,6 +931,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
             " a.delegate_unit AS delegateUnit,  " +
             " a.project_manager_name AS projectManagerName,  " +
             " a.implement_unit AS implementUnit,  " +
+            " a.implement_dept AS implementDept,  " +
             " a.plan_finish_date AS planFinishDate,  " +
             " a.project_no AS projectNo,  " +
             " a.created_date AS createdDate,  " +
@@ -923,7 +965,7 @@ public interface ZjProjectRepository extends JpaRepository<ZjProject, String>, J
         " AND IFNULL( a.project_no, '' ) LIKE %:projectNo%   " +
         " AND IFNULL( a.project_name, '' ) LIKE %:projectName%   " +
         " AND IFNULL( a.project_manager_name, '' ) LIKE %:projectManagerName%   " +
-        " AND IFNULL( a.implement_unit, '' ) LIKE %:implementUnit%   " +
+            " AND IFNULL( a.implement_unit, '' ) LIKE %:implementUnit%   " +
         " AND IFNULL( a.project_state, '' ) LIKE %:projectState%   " +
         " AND IFNULL( a.delegate_unit, '' ) LIKE %:delegateUnit% " +
         " AND IFNULL( a.multi_tenancy_id, '' ) LIKE :multiId " ,
